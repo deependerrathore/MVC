@@ -1,0 +1,5 @@
+git config --global user.name "Deepender Rathore"
+git config --global user.email "deepenrathore28@gmail.com"
+git config --global push.default matching
+git config --global alias.co checkout
+git init
