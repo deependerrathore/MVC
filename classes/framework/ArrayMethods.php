@@ -1,6 +1,6 @@
 <?php
 namespace Framework{
-    class ArrayMethod{
+    class ArrayMethods{
         private function __construct(){
             // do nothing
         }
