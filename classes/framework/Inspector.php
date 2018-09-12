@@ -55,7 +55,7 @@ namespace Framework{
                         ArrayMethods::trim(StringMethods::split($match,"[\s]",2)
                         )
                     );
-                    $meta[$part[0]] = true;
+                    $meta[$parts[0]] = true;
                     if(sizeof($parts) > 1){
                         $meta[$parts[0]] = ArrayMethods::clean(
                             ArrayMethods::time(StringMethods::split($parts[1],","))
@@ -82,7 +82,7 @@ namespace Framework{
             if(!isset($_properties)){
                 $properties = $this->_getClassProperties();
                 foreach ($properties as $property) {
-                    $_properties[] = $property->get();
+                    $_properties[] = $property->getName();
                 }
             }
             return $_properties;
