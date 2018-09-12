@@ -43,5 +43,27 @@ namespace Framework{
             $reflection = new \ReflectionMethod($this->_class,$method);
             return $reflection->getDocComment();
         }
+
+        protected function _parse($comment){
+            $meta = array();
+            $pattern = "(@[a-zA-Z]+\s*[a-zA-Z0-9, ()_]*)";
+            $matches = StringMethods::match($comment,$pattern);
+
+            if($matches != null){
+                foreach ($matches as $match) {
+                    $parts = ArrayMethods::clean(
+                        ArrayMethods::trim(StringMethods::split($match,"[\s]",2)
+                        )
+                    );
+                    $meta[$part[0]] = true;
+                    if(sizeof($parts) > 1){
+                        $meta[$parts[0]] = ArrayMethods::clean(
+                            ArrayMethods::time(StringMethods::split($parts[1],","))
+                        );
+                    }
+                }
+            }
+            return $meta;
+        }
     }
 }
