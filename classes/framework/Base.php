@@ -55,7 +55,7 @@ namespace Framework{
         }
         public function __get($name){
             $function = "get".ucfirst($name);
-            return $this->$function($value);
+            return $this->$function();
         }
         public function __set($name,$value){
             $function = "set".ucfirst($name);

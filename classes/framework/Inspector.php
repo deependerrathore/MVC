@@ -1,9 +1,9 @@
+<?php 
 /**
 The first few methods of our Inspector class use built-in PHP reflection classes to get the string values of
 Doc Comments, and to get a list of the properties and methods of a class. If we only wanted the string values,
 we could make the _getClassComment(), _getPropertyComment(), and _getMethodComment() methods public
 */
-<?php
 namespace Framework{
     use Framework\ArrayMethods as ArrayMethods;
     use Framework\StringMethods as StringMethods;
@@ -103,7 +103,7 @@ namespace Framework{
                 if(!empty($comment)){
                     $_meta["properties"][$property] = $this->_parse($comment);
                 }else{
-                    $_meta["properties"][$property] = null
+                    $_meta["properties"][$property] = null;
                 }
             }
             return $_meta["perperties"][$property];
