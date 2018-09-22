@@ -32,12 +32,6 @@ namespace Framework{
             }
         }
 
-        public function __construct(){
-            $configuration = new Framework\Configuration(array(
-                "type" => "ini"
-            ));
-            $configuration = $configuration->initialize();
-        }
     }
     
 }
