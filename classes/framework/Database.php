@@ -17,3 +17,5 @@ class Database{
         return $this->_instance->query($sql);
     }
 }
+
+?>
