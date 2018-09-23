@@ -21,10 +21,14 @@ class Application{
     private function _unregister_globals(){
         if(ini_get('register_globals')){
             $globalsArray = ['_SESSION','_COOKIE','_ENV', '_POST','_GET','_FILES','_SERVER','_REQUEST'];
-            foreach($globalsArray as $g){
-                foreach($GLOBALS[$g] as $k => $v){
-                    if($GLOBALS[$k] === $v){
-                        unset($GLOBALS[$k]);
+            foreach($globalsArray as $global){
+                if(isset($GLOBALS[$global])){
+                    foreach ($GLOBALS[$global] as $key => $value) {
+                        if(isset($GLOBALS[$key])){
+                            if($GLOBALS[$key] === $value){
+                                unset($GLOBALS[$key]);
+                            }
+                        }
                     }
                 }
             }
