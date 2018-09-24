@@ -1,7 +1,7 @@
 <?php
 
 class View{
-    protected $_head, $_body, $_siteTitle , $_outputBuffer, $_layout = DEFAULT_LAYOUT;
+    protected $_head, $_body, $_siteTitle = SITE_TITLE , $_outputBuffer, $_layout = DEFAULT_LAYOUT;
 
     public function __construct(){
         
@@ -10,9 +10,10 @@ class View{
     public function render($viewName){
         $viewArray = explode('/',$viewName);
         $viewString = implode(DS , $viewArray);
-        if(file_exists(ROOT . DS . 'app'. DS . 'views' . DS . $viewString. '.php')){
-            include(ROOT . DS . 'app'. DS . 'views' . DS . $viewString. '.php');
-            include(ROOT . DS . 'app'. DS . 'views' . DS . 'layouts'. DS . $this->_layout . '.php');
+        
+        if(file_exists(ROOT_DIR . DS . 'app'. DS . 'views' . DS . $viewString . '.php')){
+            include(ROOT_DIR . DS . 'app'. DS . 'views' . DS . $viewString. '.php');
+            //include(ROOT_DIR . DS . 'app'. DS . 'views' . DS . 'layouts'. DS . $this->_layout . '.php');
         }else{
             die("The view {$viewName} does not exist");
         }
@@ -26,5 +27,29 @@ class View{
         }
 
         return false;
+    }
+
+    public function start($type){
+        $this->_outputBuffer = $type;
+        ob_start();
+    }
+    public function end(){
+        if($this->_outputBuffer == 'head'){
+            $this->_head = ob_get_clean();
+        }elseif($this->_outputBuffer == 'body'){
+            $this->_body = ob_get_clean();
+        }else{
+            die('You must first run the start method');
+        }
+    }
+    public function getSiteTitle(){
+        return $this->_siteTitle;
+    }
+    public function setSiteTitle($title){
+        $this->_siteTitle = $title;
+    }
+
+    public function setLayout($path){
+        $this->_layout = $path;
     }
 }
