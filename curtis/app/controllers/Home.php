@@ -16,10 +16,20 @@ class Home extends Controller{
         ]; 
         
         //$contacts = $db->query('SELECT * FROM contacts')->count();
-        $contacts = $db->query('SELECT * FROM contacts')->first();
-        dnd($contacts);
+        // $contacts1 = $db->find('contacts',[
+        //     'conditions' => "fname = ?",
+        //     'bind' => ['deepender'],
+        //     'order' => "fname, lname",
+        //     'limit' => 5
+        // ]);
+        $contacts2 = $db->find('contacts',[
+            'conditions' => ['fname = ?','lname= ?'],
+            'bind' => ['lata','kanwar'],
+            'order' => "fname,lname",
+            'limit' => 5
+        ]);
         //dnd($db->get_columns('contacts'));
-        
+        dnd($contacts2);
         $this->view->render('home/index');
     }
 }
