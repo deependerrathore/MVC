@@ -22,9 +22,9 @@ class Home extends Controller{
         //     'order' => "fname, lname",
         //     'limit' => 5
         // ]);
-        $contacts2 = $db->find('contacts',[
-            'conditions' => ['fname = ?','lname= ?'],
-            'bind' => ['lata','kanwar'],
+        $contacts2 = $db->findfirst('contacts',[
+            'conditions' => ['lname= ?'],
+            'bind' => ['singh'],
             'order' => "fname,lname",
             'limit' => 5
         ]);
