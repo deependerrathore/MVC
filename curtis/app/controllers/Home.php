@@ -10,12 +10,12 @@ class Home extends Controller{
 
         $db = DB::getInstance();
         $fields = [
-            'fname' => 'Narender',
+            'fname' => 'Indu',
             'lname' => 'Rathore',
-            'email' => 'naren@naren.com'
+            'email' => 'indu@indu.com'
         ]; 
         
-        $contacts = $db->insert('contacts',$fields);
+        $contacts = $db->delete('contacts',2);
         $this->view->render('home/index');
     }
 }
