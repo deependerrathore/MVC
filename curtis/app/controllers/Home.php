@@ -9,9 +9,13 @@ class Home extends Controller{
         //die('Welcome to the home controller this is a indexAction'); 
 
         $db = DB::getInstance();
-        $sql = 'SELECT * from contacts';
-        $contacts = $db->query($sql);
-        dnd($contacts);
+        $fields = [
+            'fname' => 'Narender',
+            'lname' => 'Rathore',
+            'email' => 'naren@naren.com'
+        ]; 
+        
+        $contacts = $db->insert('contacts',$fields);
         $this->view->render('home/index');
     }
 }
