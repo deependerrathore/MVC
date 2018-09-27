@@ -10,12 +10,16 @@ class Home extends Controller{
 
         $db = DB::getInstance();
         $fields = [
-            'fname' => 'Indu',
-            'lname' => 'Rathore',
-            'email' => 'indu@indu.com'
+            'fname' => 'Datar',
+            'lname' => 'rathore',
+            'email' => 'lata@lata.com'
         ]; 
         
-        $contacts = $db->delete('contacts',2);
+        //$contacts = $db->query('SELECT * FROM contacts')->count();
+        $contacts = $db->query('SELECT * FROM contacts')->first();
+        dnd($contacts);
+        //dnd($db->get_columns('contacts'));
+        
         $this->view->render('home/index');
     }
 }
