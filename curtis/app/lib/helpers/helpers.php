@@ -6,3 +6,7 @@ function dnd($data){ // dump and die
     echo '</pre>';
     die();
 }
+
+function sanatize($dirtyValue){
+    return htmlentities($dirtyValue,ENT_QUOTES,'uft-8');
+}
