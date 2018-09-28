@@ -13,4 +13,7 @@
     define('DB_PASSWORD','root'); //databse password
     define('DB_HOST','127.0.0.1'); //database host *** use IP to avoid DNS lookup
 
+    define('CURRENT_USER_SESSION_NAME','eAiZkVoDoMcdjfIUodfjIDKoAOjk'); //session name for logged in user
+    define('REMEMBER_ME_COOKIE_NAME','jdFJDSLJFIOjdflsjioweljdflsFSLDJ'); //cookie name for logged in user remember me
+    define('REMEMBER_COOKEI_EXPIRY' , 604800); //time in seconds for remember me cookie, expiry for 30days
     
