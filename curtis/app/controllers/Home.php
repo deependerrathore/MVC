@@ -23,10 +23,9 @@ class Home extends Controller{
         //     'limit' => 5
         // ]);
         $contacts2 = $db->findfirst('contacts',[
-            'conditions' => ['lname= ?'],
-            'bind' => ['singh'],
-            'order' => "fname,lname",
-            'limit' => 5
+            'conditions' => ['id= ?'],
+            'bind' => ['1'],
+            
         ]);
         //dnd($db->get_columns('contacts'));
         dnd($contacts2);
