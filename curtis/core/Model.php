@@ -8,13 +8,14 @@ class Model{
         $this->_db = DB::getInstance();
         $this->_table = $table;
         $this->setColumnNames();
-        $this->_modelName = str_replace(' ','',ucword(str_replace('_',' ',$this->_table))); //example user_sessions = UserSessions
+        $this->_modelName = str_replace(' ','',ucwords(str_replace('_',' ',$this->_table))); //example user_sessions = UserSessions
 
     }
 
     protected function setColumnNames(){
         $columns = $this->get_columns();
         foreach ($columns as $column) {
+            $columnName = $column->Field;
             $this->_columnsNames[] = $column->Field;
             $this->{$columnName} = null;
         }
