@@ -9,29 +9,34 @@ class Register extends Controller{
 
     public function loginAction(){
         
-        $validationn = new Validate();
+        $validation = new Validate();
 
         if ($_POST) {
             //form validation
-            $validationn->check($_POST,[
+            $validation->check($_POST,[
                 'username' => [
                     'display' => "Username",
                     'required' => true
                 ],
                 'password' => [
                     'display' => "Password",
-                    'required' => true
+                    'required' => true,
+                    'min' =>  6,
+                    'max' => 20
                 ]
             ]);
-            if($validationn->passed()){
+            if($validation->passed()){
                 $user = $this->UsersModel->findByUsername($_POST['username']);
                 if ($user && password_verify(Input::get('password'),$user->password)) {
                     $remember = (isset($_POST['remember_me']) && Input::get('remember_me')) ? true : false;
                     $user->login($remember);
                     Router::redirect('');
+                }else{
+                    $validation->addError("There is something wrong with your username or password.");
                 }
             }
         }
+        $this->view->displayErrors = $validation->displayErrors();
         $this->view->render('register/login');
     }
 

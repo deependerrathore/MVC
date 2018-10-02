@@ -5,6 +5,7 @@
 <div class="col-md-6 offset-md-3 well">
     <h3 class="text-center">Login</h3>
     <form action="<?=PROJECT_ROOT?>register/login" class="form" method="POST">
+        <div class="bg-danger"><?=$this->displayErrors?></div>
         <div class="form-group">
             <label for="username">Username</label>
             <input type="text" name="username" id="username" class="form-control" />
