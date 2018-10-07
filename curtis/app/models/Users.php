@@ -48,6 +48,7 @@ class Users extends Model{
     }
 
     public function login($rememberMe = false){
+    
         Session::set($this->_sessionName,$this->id);
         if($rememberMe){
             $hash = md5(uniqid() + rand(0,100));
@@ -68,7 +69,7 @@ class Users extends Model{
         $this->_db->query("DELETE FROM user_sessions WHERE user_id = ? AND user_agent = ?",[$this->id,$user_agent]);
         Session::delete(CURRENT_USER_SESSION_NAME);
         if(Cookie::exists(REMEMBER_ME_COOKIE_NAME)){
-            Cookie::delete(REMEMBER_ME_COOKIE_NAME);
+            Cookie::delete(REMEMBER_ME_COOKIE_NAME,REMEMBER_ME_COOKEI_EXPIRY);
         }
         self::$currentLoggedInUser = null;
         return true;
