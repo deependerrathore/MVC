@@ -15,8 +15,8 @@
             <input type="password" name="password" id="password" class="form-control" />
         </div>
         <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="remember_me" value="on">
-            <label class="form-check-label" for="rembmer_me">Remember me</label>
+            <input type="checkbox" class="form-check-input" name="remember_me" id="remember_me" value="on">
+            <label class="form-check-label" for="remember_me">Remember me</label>
         </div>
         <button type="submit" class="btn btn-primary">Login</button>
         <div class="text-right">
