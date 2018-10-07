@@ -10,3 +10,7 @@ function dnd($data){ // dump and die
 function sanatize($dirtyValue){
     return htmlentities($dirtyValue,ENT_QUOTES,'uft-8');
 }
+
+function currentUser(){
+    return Users::currentLoggedInUser();
+}
