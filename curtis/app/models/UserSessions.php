@@ -9,7 +9,6 @@ class UserSessions extends Model{
     public static function getFromCookie(){
 
         $userSession = new self();
-        dnd($userSession->get_columns());
         if(COOKIE::exists(REMEMBER_ME_COOKIE_NAME)){
             $userSession = $userSession->findFirst([
                 'conditions' => "user_agent = ? AND session = ?",
