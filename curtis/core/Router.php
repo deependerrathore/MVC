@@ -9,7 +9,7 @@ class Router{
         
         //action
         $action = (isset($url[0]) && $url[0] != '')? lcfirst($url[0]) . 'Action' : 'indexAction' ; 
-        $action_name = $action;
+        $action_name = (isset($url[0]) && $url[0] != '')? $url[0] : 'index';
         array_shift($url);
         
         //ACL check
@@ -17,7 +17,7 @@ class Router{
 
         if(!$grantAccess){
             $controller_name = $controller = ACCESS_RESTRICTED;
-            $action_name = 'indexAction';
+            $action = 'indexAction';
         }
 
         //params
@@ -58,7 +58,6 @@ class Router{
         $current_urer_acls = ["Guest"];
         $grantAccess = false;
 
-        
         if(Session::exists(CURRENT_USER_SESSION_NAME)){
             $current_urer_acls[] = "LoggedIn";
             foreach(currentUser()->acls() as $a){
@@ -66,7 +65,26 @@ class Router{
             }
         }
 
-        dnd($current_urer_acls);
+        foreach($current_urer_acls as $level){ //$level; = Guest,LoggedIn,Admin(FROM DB)
+            if (array_key_exists($level,$acl) && array_key_exists($controller_name,$acl[$level])) {
+                if (in_array($action_name,$acl[$level][$controller_name]) || in_array("*",$acl[$level][$controller_name])) {
+                    $grantAccess = true;
+                    break;
+                }
+            }
+        }
+
+        //Check for denied
+        foreach($current_urer_acls as $level){
+            $denied = $acl[$level]['denied'];
+            if (!empty($denied) && array_key_exists($controller_name,$denied) && in_array($action_name,$denied[$controller_name])) {
+                $grantAccess = false;
+                break;
+            }
+
+        }
+
+        return $grantAccess;
 
     }
 }
