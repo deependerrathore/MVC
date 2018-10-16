@@ -56,7 +56,7 @@ class Model{
             $fields[$column] = $this->$column;
         }
         //determine whether to update or insert
-        if(property_exists($this,$id) && $this->id != ''){
+        if(property_exists($this,'id') && $this->id != ''){
             return $this->update($this->id,$fields);
         }else{
             return $this->insert($fields);
@@ -98,9 +98,12 @@ class Model{
             foreach ($params as $key => $value) {
                 if(in_array($key,$this->_columnsNames)){
                     $this->$key = sanatize($value);
+                    
                 }
             }
             return true;
+            
+            
         }
         return false;
     }

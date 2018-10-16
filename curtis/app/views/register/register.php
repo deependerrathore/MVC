@@ -13,23 +13,23 @@
         </div>
         <div class="form-group">
             <label for="lname">Last Name</label>
-            <input type="text" name="lname" id="lname" value="<?=$this->post['fname'];?>" class="form-control" />
+            <input type="text" name="lname" id="lname" value="<?=$this->post['lname'];?>" class="form-control" />
         </div>
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" name="email" id="email" value="<?=$this->post['fname'];?>"  class="form-control" />
+            <input type="email" name="email" id="email" value="<?=$this->post['email'];?>"  class="form-control" />
         </div>
         <div class="form-group">
             <label for="username">Choose a Username</label>
-            <input type="text" name="username" id="username" value="<?=$this->post['fname'];?>" class="form-control" />
+            <input type="text" name="username" id="username" value="<?=$this->post['username'];?>" class="form-control" />
         </div>
         <div class="form-group">
             <label for="password">Choose a Password</label>
-            <input type="password" name="password" id="password" value="<?=$this->post['fname'];?>" class="form-control" />
+            <input type="password" name="password" id="password" value="<?=$this->post['password'];?>" class="form-control" />
         </div>
         <div class="form-group">
             <label for="confirm">Confirm  Password</label>
-            <input type="password" name="confirm" id="confirm" value="<?=$this->post['fname'];?>" class="form-control" />
+            <input type="password" name="confirm" id="confirm" value="<?=$this->post['confirm'];?>" class="form-control" />
         </div>
         <button type="submit" class="btn btn-primary">Register</button>
         <div class="text-right">

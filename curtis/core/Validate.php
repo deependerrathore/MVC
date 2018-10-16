@@ -37,8 +37,8 @@ class Validate
 
                         case 'matches':
                             if ($value != $source[$rule_value]) {
-                                $matchDisplay = $items[$rule_value][$display];
-                                $this->addError(["{$matchDisplay} and {$display} must match."], $item);
+                                $matchDisplay = $items[$rule_value]['display']; 
+                                $this->addError(["{$matchDisplay} and {$display} must match.", $item]);
                             }
                             break;
 
