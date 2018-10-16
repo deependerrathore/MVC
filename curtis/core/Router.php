@@ -12,6 +12,14 @@ class Router{
         $action_name = $action;
         array_shift($url);
         
+        //ACL check
+        $grantAccess = self::hasAccess($controller_name,$action_name);
+
+        if(!$grantAccess){
+            $controller_name = $controller = ACCESS_RESTRICTED;
+            $action_name = 'indexAction';
+        }
+
         //params
         $queryParams = $url;
         
@@ -43,5 +51,22 @@ class Router{
             echo '</noscript>';
             exit();
         }
+    }
+    public static function hasAccess($controller_name,$action_name = 'index'){
+        $acl_file = file_get_contents(ROOT_DIR. DS. 'app'. DS .'acl.json');
+        $acl = json_decode($acl_file,true); //true will convert object to associative array
+        $current_urer_acls = ["Guest"];
+        $grantAccess = false;
+
+        
+        if(Session::exists(CURRENT_USER_SESSION_NAME)){
+            $current_urer_acls[] = "LoggedIn";
+            foreach(currentUser()->acls() as $a){
+                $current_urer_acls[] = $a;
+            }
+        }
+
+        dnd($current_urer_acls);
+
     }
 }
