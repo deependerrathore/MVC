@@ -10,14 +10,14 @@ class Validate
 
     }
 
-    public function check($source, $items = [])
+    public function check($source, $items = [])//here $items is an array which contain another array
     {
         $this->_errors = [];
-        foreach ($items as $item => $rules) {
+        foreach ($items as $item => $rules) { //eg $item = username and $rules is another array
             $item = Input::sanatize($item);
-            $display = $rules['display'];
-            foreach ($rules as $rule => $rule_value) {
-                $value = Input::sanatize(trim($source[$item]));
+            $display = $rules['display']; //display key contain value 'Username' so $display is equal to Username
+            foreach ($rules as $rule => $rule_value) { //rule = display or required and $rule_value = Username or true resp
+                $value = Input::sanatize(trim($source[$item])); //here we are grabbing the actual value of the textfield eg. $source = $_POST and $item = username so final value would be $_POST['username']
 
                 if ($rule === 'required' && empty($value)) {
                     $this->addError(["{$display} is required", $item]);

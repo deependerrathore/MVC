@@ -3,7 +3,7 @@
 
 <?php $this->start('body'); ?>
 <div class="col-md-6 offset-md-3 well">
-    <h3 class="text-center">Login</h3>
+    <h3 class="text-center">Login</h3><hr>
     <form action="<?=PROJECT_ROOT?>register/login" class="form" method="POST">
         <div class="bg-danger"><?=$this->displayErrors?></div>
         <div class="form-group">
