@@ -8,7 +8,7 @@
         "Tool 3" : "tools/third"
     },
     "Google": "https://www.google.com",
-    "PHP Docs" : "https://php.net/manual/en",
+    "PHP Docs" : "http://php.net/manual/en",
     "Login" : "register/login",
     "Logout" : "register/logout"
 }
