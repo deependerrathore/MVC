@@ -33,9 +33,7 @@ class Users extends Model{
     }
 
     public function findByUsername($username){
-        
-        return $this->findFirst(['condition' => 'username = ?','bind' => [$username]]);
-        
+        return $this->findFirst(['conditions' => 'username = ?','bind' => [$username]]);        
     }
 
     public static function currentLoggedInUser(){
