@@ -21,3 +21,10 @@ function posted_values($post){
     }
     return $clean_ary;
 }
+function currentPage(){
+    $currentPage = $_SERVER['REQUEST_URI'];
+    if($currentPage == PROJECT_ROOT || $currentPage == PROJECT_ROOT.'home/index'){
+        $currentPage = PROJECT_ROOT . 'home';
+    }
+    return $currentPage;
+}

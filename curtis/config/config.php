@@ -7,6 +7,7 @@
 
     define('SITE_TITLE', 'MVC_FRAMEWORK'); //this will be used if no site title will be used
 
+    define('MENU_BRAND','EVENTUNACADEMY');
     //DB details
     define('DB_NAME','mvc'); //database schema
     define('DB_USER','root'); //database user
